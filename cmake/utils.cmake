@@ -1,3 +1,10 @@
+#[[
+    File modified from:
+    https://github.com/pananton/cpp-lib-template/blob/main/cmake/utils.cmake
+
+    cpp-lib-template licensed under Apache-2.0
+]]
+
 # set_if_undefined(<variable> [<value>]...)
 #
 # Set variable if it is not defined.

@@ -1,3 +1,10 @@
+#[[
+    File modified from:
+    https://github.com/pananton/cpp-lib-template/blob/main/CMakeLists.txt
+
+    cpp-lib-template licensed under Apache-2.0
+]]
+
 cmake_minimum_required(VERSION 3.14)
 project(galactic
     VERSION 0.0.1

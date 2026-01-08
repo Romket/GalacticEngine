@@ -1,5 +1,12 @@
+#[[
+    File modified from:
+    https://github.com/pananton/cpp-lib-template/blob/main/tests/CMakeLists.txt
+
+    cpp-lib-template licensed under Apache-2.0
+]]
+
 cmake_minimum_required(VERSION 3.14)
-project(mylib-tests)
+project(galactic-tests)
 
 #----------------------------------------------------------------------------------------------------------------------
 # general settings and options
@@ -22,7 +29,7 @@ FetchContent_Declare(googletest URL https://github.com/google/googletest/archive
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE) # do not override parent project's runtime settings on Windows
 set(INSTALL_GTEST OFF)
 
-# For simplicity, always build googletest as static library. This prevents mylib-tests executable from
+# For simplicity, always build googletest as static library. This prevents galactic-tests executable from
 # complaining about missing googletest DLLs on Windows.
 set(BUILD_SHARED_LIBS OFF)
 
@@ -33,7 +40,7 @@ FetchContent_MakeAvailable(googletest)
 #----------------------------------------------------------------------------------------------------------------------
 
 if(is_top_level)
-    find_package(mylib REQUIRED)
+    find_package(galactic REQUIRED)
 endif()
 
 #----------------------------------------------------------------------------------------------------------------------
@@ -41,24 +48,24 @@ endif()
 #----------------------------------------------------------------------------------------------------------------------
 
 set(sources
-    add_test.cpp)
+    #[[Test .cpp files here]])
 source_group(TREE "${CMAKE_CURRENT_SOURCE_DIR}" FILES ${sources})
 
 #----------------------------------------------------------------------------------------------------------------------
 # tests target
 #----------------------------------------------------------------------------------------------------------------------
 
-add_executable(mylib-tests)
-target_sources(mylib-tests PRIVATE ${sources})
+add_executable(galactic-tests)
+target_sources(galactic-tests PRIVATE ${sources})
 
-target_link_libraries(mylib-tests
+target_link_libraries(galactic-tests
     PRIVATE
-        mylib::mylib
+        galactic::galactic
         gtest_main)
 
 if(NOT is_top_level)
-    win_copy_deps_to_target_dir(mylib-tests mylib::mylib)
+    win_copy_deps_to_target_dir(galactic-tests galactic::galactic)
 endif()
 
 include(GoogleTest)
-gtest_discover_tests(mylib-tests)
+gtest_discover_tests(galactic-tests)

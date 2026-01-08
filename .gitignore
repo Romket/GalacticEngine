@@ -39,3 +39,19 @@
 
 # debug information files
 *.dwo
+
+# Build folders
+build*/
+_build*/
+cmake-build*/
+
+# CMake
+CMakeUserPresets.json
+
+# IDEs
+.idea/
+.vs/
+.vscode/
+
+# Mac
+.DS_Store

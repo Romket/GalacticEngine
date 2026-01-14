@@ -63,7 +63,7 @@ endif()
 generate_export_header(galactic EXPORT_FILE_NAME include/galactic/${export_file_name})
 
 set(sources
-    include/galactic/export.h
+#   include/galactic/export.h
     include/galactic/galactic.h
     src/galactic.cpp)
 source_group(TREE "${CMAKE_CURRENT_SOURCE_DIR}" FILES ${sources})

@@ -45,13 +45,25 @@ def scan_file(path):
     violations = []
     current_context = None
     inside_enum = False
+    multiline_comment = False
 
     with open(path, 'r', encoding='utf-8', errors='ignore') as f:
         lines = f.readlines()
 
+    # Does not account for inline comments, /* <some naming violation> */ flags
     for lineno, line in enumerate(lines, 1):
+        if re.match(r'\*\/'):
+            multiline_comment = False
+
+        if multiline_comment: continue
+
         stripped = line.strip()
 
+        if re.match(r'\/\/'): continue
+
+        if re.match(r'\/\*'):
+            multiline_comment = True
+        
         if re.match(r'^\s*(public|private|protected)\s*:', stripped):
             current_context = ACCESS_CONTEXT[stripped.split(':')[0]]
             continue

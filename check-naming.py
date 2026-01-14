@@ -52,16 +52,16 @@ def scan_file(path):
 
     # Does not account for inline comments, /* <some naming violation> */ flags
     for lineno, line in enumerate(lines, 1):
-        if re.match(r'\*\/'):
+        if re.match(r'\*\/', stripped):
             multiline_comment = False
 
         if multiline_comment: continue
 
         stripped = line.strip()
 
-        if re.match(r'\/\/'): continue
+        if re.match(r'\/\/', stripped): continue
 
-        if re.match(r'\/\*'):
+        if re.match(r'\/\*', stripped):
             multiline_comment = True
         
         if re.match(r'^\s*(public|private|protected)\s*:', stripped):

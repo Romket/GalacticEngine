@@ -59,9 +59,9 @@ def scan_file(path):
 
         stripped = line.strip()
 
-        if re.match(r'\/\/'): continue
+        if re.match(r'\/\/', stripped): continue
 
-        if re.match(r'\/\*'):
+        if re.match(r'\/\*', stripped):
             multiline_comment = True
         
         if re.match(r'^\s*(public|private|protected)\s*:', stripped):

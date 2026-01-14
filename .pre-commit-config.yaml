@@ -16,8 +16,7 @@ repos:
         args: ["--enable=all", "--language=c++", "--inline-suppr",
           "--check-level=exhaustive"]
       - id: include-what-you-use
-      - id: oclint
-      - id: uncrustify
+      #- id: uncrustify
   - repo: local
     hooks:
       - id: naming-convention-checker

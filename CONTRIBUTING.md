@@ -38,7 +38,7 @@ When creating pull requests, please keep in mind the following:
   - For best practice, keep commits contained to relatively small changes.
     - This makes it easier to regress if issues later arise from code.
     - Ideally, every commit should work, though at this early stage this is not feasible.
-  - Turn on allow edits from maintainers, so we can make a final changes if necessary.
+  - Turn on allow edits from maintainers, so we can make any final changes if necessary.
 
 ## AI Contribution
 

@@ -7,7 +7,7 @@
  * 
  * @copyright Copyright (c) 2026 Luke Houston
  * 
- * This file is part of Galactic Engine.  Galactic Engine is free software:
+ * This file is part of Galactic Engine.  Galactic engine is free software:
  * you can redistribute it and/or modify it under the terms of the GNU
  * Affero General Public License as publishedby the Free Software Foundation,
  * either version 3 of the License, or (at your option) any later version.

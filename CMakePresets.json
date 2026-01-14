@@ -39,7 +39,7 @@
       "description": "Experimental testing for openBSD, netBSD, and freeBSD",
       "hidden": false,
       "inherits": ["dev"],
-      "cacheVariable": {
+      "cacheVariables": {
         "CMAKE_CXX_FLAGS": "-Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wsign-conversion -Wcast-align -Wcast-qual -Wnull-dereference -Woverloaded-virtual -Wformat=2 -Werror"
       }
     }

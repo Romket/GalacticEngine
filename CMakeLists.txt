@@ -8,8 +8,10 @@
 cmake_minimum_required(VERSION 3.14)
 project(galactic
     VERSION 0.0.1
-    DESCRIPTION "Game engine library"
+    DESCRIPTION "Low-level game engine library"
     LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 23)
 
 #----------------------------------------------------------------------------------------------------------------------
 # general settings and options
@@ -25,7 +27,7 @@ option(GALACTIC_BUILD_TESTS "Build Galactic Engine tests" OFF)
 option(GALACTIC_BUILD_EXAMPLES "Build Galactic Engine examples" OFF)
 option(GALACTIC_BUILD_DOCS "Build Galactic Engine documentation" OFF)
 option(GALACTIC_INSTALL "Generate target for installing Galactic Engine" ${is_top_level})
-set_if_undefined(GALACTIC_INSTALL_CMAKEDIR "${CMAKE_INSTALL_LIBDIR}/cmake/galacticengine" CACHE STRING
+set_if_undefined(GALACTIC_INSTALL_CMAKEDIR "${CMAKE_INSTALL_LIBDIR}/cmake/galactic" CACHE STRING
     "Install path for Galactic Engine package-related CMake files")
 
 if(DEFINED GALACTIC_SHARED_LIBS)
@@ -47,7 +49,6 @@ add_library(galactic::galactic ALIAS galactic)
 # Galactic Engine dependencies
 #----------------------------------------------------------------------------------------------------------------------
 
-# Search for your dependencies here
 
 #----------------------------------------------------------------------------------------------------------------------
 # Galactic Engine sources
@@ -161,3 +162,14 @@ if(GALACTIC_BUILD_DOCS)
     find_package(Doxygen REQUIRED)
     doxygen_add_docs(docs include)
 endif()
+
+#----------------------------------------------------------------------------------------------------------------------
+# custom commands
+#----------------------------------------------------------------------------------------------------------------------
+
+add_custom_command(TARGET galactic POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy
+        ${CMAKE_BINARY_DIR}/compile_commands.json
+        ${CMAKE_BINARY_DIR}/..
+    COMMENT "Copying compile_commands.json"
+)

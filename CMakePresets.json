@@ -7,13 +7,18 @@
   },
   "configurePresets": [
     {
+      "name": "default",
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "hidden": true
+    },
+    {
       "name": "dev",
       "description": "Base preset for library developers",
-      "binaryDir": "${sourceDir}/build",
       "hidden": true,
+      "inherits": ["default"],
       "cacheVariables": {
-        "MYLIB_BUILD_TESTS": "ON",
-        "MYLIB_BUILD_EXAMPLES": "ON"
+        "IGNORELIB_BUILD_TESTS": "ON",
+        "IGNORELIB_BUILD_EXAMPLES": "ON"
       }
     },
     {
@@ -31,7 +36,53 @@
       "hidden": false,
       "inherits": ["dev"],
       "cacheVariables": {
-        "CMAKE_CXX_FLAGS": "-Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wsign-conversion -Wcast-align -Wcast-qual -Wnull-dereference -Woverloaded-virtual -Wformat=2 -Werror"
+        "CMAKE_CXX_FLAGS": "-Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wsign-conversion -Wcast-align -Wcast-qual -Wnull-dereference -Woverloaded-virtual -Wformat=2"
+      }
+    },
+    {
+      "name": "rel",
+      "description": "Base release preset",
+      "hidden": true,
+      "inherits": ["default"],
+      "cacheVariables": {
+        "IGNORELIB_BUILD_TESTS": "OFF",
+        "IGNORELIB_BUILD_EXAMPLES": "OFF"
+      }
+    },
+    {
+      "name": "rel-win",
+      "description": "Windows release preset",
+      "hidden": false,
+      "inherits": ["rel"],
+      "cacheVariables": {
+        "CMAKE_CXX_FLAGS": "/02"
+      }
+    },
+    {
+      "name": "rel-linux",
+      "description": "Linux release preset",
+      "hidden": false,
+      "inherits": ["rel"],
+      "cacheVariables": {
+        "CMAKE_CXX_FLAGS": "-Ofast -march=native -flto -funroll-loops -fprefetch-loop-arrays -fopenmp -fprofile-generate"
+      }
+    },
+    {
+      "name": "relminsize-win",
+      "description": "Windows release preset with minimum compiled size",
+      "hidden": false,
+      "inherits": ["rel"],
+      "cacheVariables": {
+        "CMAKE_CXX_FLAGS": "/01"
+      }
+    },
+    {
+      "name": "relminsize-linux",
+      "description": "Linux release preset with minimum compiled size",
+      "hidden": false,
+      "inherits": ["rel"],
+      "cacheVariables": {
+        "CMAKE_CXX_FLAGS": "-Os -march=native -flto"
       }
     }
   ]

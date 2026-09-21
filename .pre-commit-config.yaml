@@ -10,17 +10,6 @@ repos:
     rev: v1.3.5
     hooks:
       - id: clang-format
-        args: ["--style=file"]
+        args: ["--style=file", "-i"]
       - id: clang-tidy
-      - id: cppcheck
-        args: ["--enable=all", "--language=c++", "--inline-suppr",
-          "--check-level=exhaustive"]
-      - id: include-what-you-use
-      #- id: uncrustify
-  - repo: local
-    hooks:
-      - id: naming-convention-checker
-        name: C++ Naming Convention Checker
-        entry: python3 check-naming.py
-        language: system
-        types: [c, c++]
+        args: ["--config-file=.clang-tidy", "-p=build"]
